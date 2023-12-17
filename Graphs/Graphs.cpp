@@ -100,48 +100,48 @@ public:
     }
 
     void dijkstra(int start, int target) {
-		queue <int> q;
-		int path[numV];
-		int distance[numV];
-		for(int i = 0; i < numV; i++) {
-			distance[i] = INT_MAX;
-			path[i] = -1;
-		}
-		
-		distance[start] = 0;
-		q.push(start);
-		
-		while(!q.empty()) {
-			int v = q.front();
-			q.pop();
-			
-			for(int i = 0; i < numV; i++) {
-				if(adj[v][i] == 1) {
-					if(distance[i] > distance[v] + cost[v][i]) {
-						q.push(i);
-						distance[i] = distance[v] + cost[v][i];	
-						path[i] = v;
-					}
-				}
-			}
-		}
-	    	stack <int> pathStack;
-		int current = target;
-		while(current != start) {
-			pathStack.push(current);
-			current = path[current];
-		}
-		pathStack.push(start);
-		
-		cout << "Shortest Path from " << start << " to " << target << ": ";
-		while(pathStack.top() != target) {
-			cout << pathStack.top() << " --> ";
-			pathStack.pop();
-		}
-		cout << pathStack.top();
-		pathStack.pop();
-    	cout << endl << "Shortest Distance from " << start << " to " << target << ": " << distance[target] << endl;
+	queue <int> q;
+	int path[numV];
+	int distance[numV];
+	for(int i = 0; i < numV; i++) {
+	    distance[i] = INT_MAX;
+	    path[i] = -1;
 	}
+		
+	distance[start] = 0;
+	q.push(start);
+		
+	while(!q.empty()) {
+	    int v = q.front();
+	    q.pop();
+			
+	    for(int i = 0; i < numV; i++) {
+	        if(adj[v][i] == 1) {
+		    if(distance[i] > distance[v] + cost[v][i]) {
+		        q.push(i);
+		        distance[i] = distance[v] + cost[v][i];	
+		        path[i] = v;
+	   	    }
+	        }
+	    }
+	}
+	stack <int> pathStack;
+	int current = target;
+	while(current != start) {
+	    pathStack.push(current);
+	    current = path[current];
+	}
+	pathStack.push(start);
+		
+	cout << "Shortest Path from " << start << " to " << target << ": ";
+	while(pathStack.top() != target) {
+	    cout << pathStack.top() << " --> ";
+	    pathStack.pop();
+	}
+	cout << pathStack.top();
+	pathStack.pop();
+    	cout << endl << "Shortest Distance from " << start << " to " << target << ": " << distance[target] << endl;
+    }
 
     void printList() {
         for (int i = 0; i < numVertices; i++) {
