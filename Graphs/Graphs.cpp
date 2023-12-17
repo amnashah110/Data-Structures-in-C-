@@ -125,6 +125,23 @@ public:
 				}
 			}
 		}
+	    	stack <int> pathStack;
+		int current = target;
+		while(current != start) {
+			pathStack.push(current);
+			current = path[current];
+		}
+		pathStack.push(start);
+		
+		cout << "Shortest Path from " << start << " to " << target << ": ";
+		while(pathStack.top() != target) {
+			cout << pathStack.top() << " --> ";
+			pathStack.pop();
+		}
+		cout << pathStack.top();
+		pathStack.pop();
+    	cout << endl << "Shortest Distance from " << start << " to " << target << ": " << distance[target] << endl;
+	}
 
     void printList() {
         for (int i = 0; i < numVertices; i++) {
