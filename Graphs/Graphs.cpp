@@ -99,6 +99,33 @@ public:
         }
     }
 
+    void dijkstra(int start, int target) {
+		queue <int> q;
+		int path[numV];
+		int distance[numV];
+		for(int i = 0; i < numV; i++) {
+			distance[i] = INT_MAX;
+			path[i] = -1;
+		}
+		
+		distance[start] = 0;
+		q.push(start);
+		
+		while(!q.empty()) {
+			int v = q.front();
+			q.pop();
+			
+			for(int i = 0; i < numV; i++) {
+				if(adj[v][i] == 1) {
+					if(distance[i] > distance[v] + cost[v][i]) {
+						q.push(i);
+						distance[i] = distance[v] + cost[v][i];	
+						path[i] = v;
+					}
+				}
+			}
+		}
+
     void printList() {
         for (int i = 0; i < numVertices; i++) {
             char iV = i + 'A';
