@@ -31,7 +31,7 @@ public:
 		int index = hashFunction(key);
 		int i = 1;
 		while(buckets[index] != 0 && buckets[index] != key) {
-			index = (index + 1 * i) % 10;
+			index = (index + i * i) % 10;
 			i++;
 		}
 		if(buckets[index] != key) {
@@ -51,7 +51,7 @@ public:
 		int index = hashFunction(key);
 		int i = 1;
 		while(buckets[index] != key) {
-			index = (index + 1 * i) % 10;
+			index = (index + i * i) % 10;
 			i++;
 		}
 		buckets[index] = 0;
