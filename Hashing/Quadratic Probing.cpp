@@ -21,7 +21,7 @@ public:
 		int index = hashFunction(key);
 		int i = 1;
 		while(buckets[index] != 0) {
-			index = (index + 1 * i) % 10;
+			index = (index + i * i) % 10;
 			i++;
 		}
 		buckets[index] = key;
